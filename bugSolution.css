@@ -1,0 +1,14 @@
+Instead of complex `calc()` expressions, use simpler ones or break down the calculation into multiple steps. For instance:
+```css
+/* Problematic code */
+width: calc(100% - (100px + 2em));
+
+/* Improved code */
+width: calc(100% - 100px);
+margin-right: 2em;
+/* OR, if 100px + 2em should be a single unit value that needs to be calculated beforehand, then use a variable or pre-calculated value */
+.container { width: calc(100% - var(--margin-width)); }
+.container { --margin-width: 120px; }
+/* OR, pre-calculate the value in JS and add to inline style */
+```
+This approach helps to avoid potential browser inconsistencies and make the CSS more maintainable and readable.
