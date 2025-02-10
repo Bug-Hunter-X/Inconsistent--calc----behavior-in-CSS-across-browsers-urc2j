@@ -1,0 +1,13 @@
+The CSS property `calc()` is used to perform calculations. However, there might be issues if you try to use `calc()` with multiple units, or when dealing with certain expressions.
+
+For example, the following code may produce unexpected results in some browsers:
+```css
+width: calc(50% + 10px);
+/* This is generally fine */
+
+width: calc(100% - (100px + 2em));
+/* This can be problematic.  The parentheses around `(100px + 2em)` are crucial, but the expression itself could cause trouble. */
+```
+The issue arises when the browser needs to handle multiple units within the calculation. Inconsistent behaviour across browsers might stem from how they parse and evaluate such complex expressions.  Always ensure that units are consistent (e.g., all pixels, or all percentages) or are combined correctly using `+` and `-`.
+
+Another unexpected behaviour can occur when using nested `calc()` functions, which might also show inconsistent browser behavior.
